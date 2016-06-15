@@ -1,0 +1,58 @@
+\chapter{Introduction}
+
+Support vector machines (SVM) are most popular classification technique used. In past few years SVM is used in many application areas and it gave cutting edge performances. The capacity of a learning machine is measured by VC dimension. A small VC dimension leads to good generalization. SVM can have a very large VC dimension so good generalization is not guaranteed in SVM. Mininal complexity machine a classifier which was developed to overcome this disadvantage of SVM. MCM propose a linear bound on VC dimension that led to an objective which can be solved by linear programming\cite{MCM}. But the time complexity of the linear programming solver is exponential in worst case. So, even MCM have advantages over SVM it can't be used for larger data-sets.
+
+
+To overcome this issue of complexity some methods are proposed in this thesis. One method was convert the objective into dual form and used the convex programming solver . This speedups the solving process but was not able to solve the larger problem. So, the problem remains same.
+Sub-gradient method is the next approach that is applied to solve the problem. Dual coordinate descent is one of the well-known method. To apply these method some changes in objective function was required which is described in the preceding section. And the experiments show that the method worked for most of the data-sets.
+
+\section{Problem Definition}
+
+TODO
+
+
+\section{Literature review and related work}
+
+%Replace \lipsum with text.
+% You may have as many sections as you please. This is just for reference.
+
+\subsection{Minimal complexity machine}\label{mcmPaperReview}
+Support vector machines is the most widely used machine learning techniques today. But SVMs can have a very large VC dimension, at present there exists no theory which shows that good generalization performance is guaranteed for SVMs. Jaydeva \cite{MCM} given a theory about how to learn a classifier with large margin, by minimizing an exact (\textbf{$\Theta$}) bound on the VC dimension which leads to a simple linear programming problem. Experimental results provided shows that the MCM yields better test set accuracy while using less than $1/10^{th}$ the number of support vectors obtained by SVMs.The formulation of MCM is described in equation \ref{mcmeq1}-\ref{mcmeq4}
+\begin{equation}\label{mcmeq1}
+min_{h,b,w,q}\:\: h + C\sum_i{q_i}
+\end{equation}
+\begin{equation}\label{mcmeq2}
+h \geq y_i(w^Tx_i+b)+ q_i \:\:\forall i={1, 2, .. M}
+\end{equation}
+\begin{equation}\label{mcmeq3}
+y_i(w^Tx_i +b) + q_i \geq 1 \:\:\forall i={1,2,.. M}
+\end{equation}
+\begin{equation}\label{mcmeq4}
+q_i \geq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+The complexity of the above problem can be exponential in worst case so it is not suitable for a large size problems.
+
+\subsection{Fuzzy rough set based SVM}\label{\FRSVMPaperReview}
+As well-known learning machines, support vector machines (SVMs) are first designed to deal with binary classification with their linear decision functions. A support vector machine first maps the input points into a high-dimensional feature space and then finds a separating hyperplane that maximizes the margin between two classes in this feature space. Without any knowledge of the mapping, the SVM uses kernels as the dot product functions in feature space. The solution of the optimal hyperplane can be written as a combination of a few input points called support vectors. But Some data points may be corrupted by noises and become less meaningful and it would be better to discard them. SVM lacks this kind of capacity. So fuzzy SVM was introduced but Owing to the limitation of human knowledge and complexity of the objective world, it is possible that while collecting the traing data, collector get some conditional features which may not necessarily have a close relationship with decision labels, and some key features related to decision labels might not be easily collected. This may lead to an inconsistency between the conditional features and decision labels, i.e., some samples have similar even same conditional feature values but different decision labels. So the author \cite{FRSVM} suggested the consideration of rough set theory as it consider the inconsitency. They propsed to calculate the fuzzy rough set score first for each point then learning a hyperplane on the basis of this score. The formulation of the classifier is shown in the equation \ref{frsvmeq1}-\ref{frsvmeq2}
+\begin{equation}\label{frsvmeq1}
+min_{w,b,q}\:\: \frac{1}{2} ||w||^2 + C\sum_i{s_i q_i}
+\end{equation}
+\begin{equation}\label{frsvmeq2}
+y_i(w^Tx_i +b) + q_i \geq s_i \:\:\forall i={1,2,.. M}
+\end{equation}
+Where each $s_i$ is calculated on the basis of fuzzy transitive kernel. 
+% where each $s_i$ is calculated by the equation \ref{frsvmscore}
+
+% \begin{equation}\label{frsvmscore}
+% s_x = min_{u \notin class(x)}\sqrt{1-(e^\frac{-||x-u||^2}{2\sigma^2})^2}
+% \end{equation}
+Each score is between 0-1. This SVM ensures a fat margin. This phenomenon is not introduced in MCM yet.
+
+\subsection{Dual Coordinate Descent Method for Large-scale Linear SVM}\label{DCDPaperReview}
+Linear Support Vector Machines (SVM) is one of the most popular tools to deal with such large-scale sparse data. The author \cite{dcd} proposed in this paper a novel dual coordinate descent method for linear SVM with L1 and L2-loss functions. The proposed method is simple
+and reaches an $\epsilon$-accurate solution in O(log(1/$\epsilon$)) iterations. The optimization starts from a initial point and updates alphas in each iteration. weight vector is also updated accordingly. The experimental results showed that this method is much faster than state of the art solvers.\\
+Our final improved method is based on this algorithm. And the experiments indicate that the modified method worked for MCM too.
+
+\section{Organization of Thesis}
+
+TODO

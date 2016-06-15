@@ -1,0 +1,130 @@
+\chapter{Generalization of MCM}
+
+TODO
+\section{Primal form of Generalized MCM }
+\begin{equation}\label{mcmeq1}
+min_{h,b,w,q,\eta}\:\: h + C_1\sum_i{q_i} + C_2\sum_i{\eta_i}
+\end{equation}
+\begin{equation}\label{mcmeq2}
+h + \eta_i \geq y_i(w^Tx_i+b) \:\:\forall i={1, 2, .. M}
+\end{equation}
+\begin{equation}\label{mcmeq3}
+y_i(w^Tx_i +b) + q_i \geq 1 \:\:\forall i={1,2,.. M}
+\end{equation}
+\begin{equation}\label{mcmeq4}
+q_i \geq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+\begin{equation}
+\eta_i \geq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+
+% \begin{equation}
+    
+% \end{equation}
+
+\subsection{complexity analysis}
+TODO
+\section{Dual form of Generalized of MCM}
+\subsection{Formulation of dual form}
+\begin{equation}\label{mcmeq1}
+min_{h,b,w,q,\eta}\:\: h + C_1\sum_i{q_i} + C_2\sum_i{\eta_i}
+\end{equation}
+\begin{equation}\label{mcmeq2}
+h + \eta_i \geq y_i(w^Tx_i+b) \:\:\forall i={1, 2, .. M}
+\end{equation}
+\begin{equation}\label{mcmeq3}
+y_i(w^Tx_i +b) + q_i \geq 1 \:\:\forall i={1,2,.. M}
+\end{equation}
+\begin{equation}\label{mcmeq4}
+q_i \geq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+\begin{equation}
+\eta_i \geq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+
+\begin{equation}\label{mcmeq1}
+min_{h,b,w,q,\eta}\:\: h + C_1\sum_i{q_i} + C_2\sum_i{\eta_i}
+\end{equation}
+\begin{equation}\label{mcmeq2}
+y_i(w^Tx_i+b) - h - \eta_i \leq 0 \:\:\forall i={1, 2, .. M}
+\end{equation}
+\begin{equation}\label{mcmeq3}
+1 - y_i(w^Tx_i +b) - q_i \leq 0  \:\:\forall i={1,2,.. M}
+\end{equation}
+\begin{equation}\label{mcmeq4}
+-q_i \leq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+\begin{equation}
+-\eta_i \leq 0 \:\:\forall i={1, 2, ... M}
+\end{equation}
+the Lagrangian equation of [ref to above equation]
+\begin{equation}
+\begin{split}
+L=h + C_1\sum_i{q_i} + C_2\sum_i{\eta_i} + \sum_i{\alpha_i (y_i(w^Tx_i+b) - h - \eta_i)} \\
++ \sum_i{\beta_i (1 - y_i(w^Tx_i +b) - q_i)} - \sum_i{\gamma_iq_i} - \sum_i{\theta_i\eta_i}
+\end{split}
+\end{equation}
+\begin{equation}
+\frac{\partial L}{\partial h} = 1 - \sum_i{\alpha_i}
+\end{equation}
+\begin{equation}
+\frac{\partial L}{\partial w} = \sum_i{\alpha_iy_ix_i} - \sum_i{\beta_iy_ix_i}
+\end{equation}
+\begin{equation}
+\frac{\partial L}{\partial b} = \sum_i{\alpha_iy_i} - \sum_i{\beta_iy_i}
+\end{equation}
+\begin{equation}
+\frac{\partial L}{\partial q_i} = C_1 - \beta_i - \gamma_i
+\end{equation}
+\begin{equation}
+\frac{\partial L}{\partial \eta_i} = C_2 - \alpha_i -\theta_i
+\end{equation}
+equating all partial derivative to zero, we get
+\begin{equation}
+\sum_i{\alpha_i} = 1
+\end{equation}
+\begin{equation}
+\sum_i{\alpha_iy_ix_i} - \sum_i{\beta_iy_ix_i} = 0
+\end{equation}
+\begin{equation}
+\sum_i{\alpha_iy_i} - \sum_i{\beta_iy_i} = 0
+\end{equation}
+\begin{equation}
+\beta_i + \gamma_i = C_1 \implies \beta_i \leq C_1
+\end{equation}
+\begin{equation}
+\alpha_i +\theta_i = C_2 \implies \alpha_i \leq C_2
+\end{equation}
+\end{equation}
+putting values in [ref to lag eqn]
+\begin{equation}
+\begin{split}
+L=h(1-\sum_i\alpha_i) + \sum_i{(C_1 - \beta_i - \gamma_i)q_i} + \sum_i{(C_2 - \alpha_i - \theta_i)\eta_i} +\\ \sum_i{(\alpha_i-beta_i)y_ix_iw^T} + \sum_i{\beta_i} + \sum_i{(\alpha_i - \beta_i)y_ib}
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+L= \sum_i{\beta_i}
+\end{split}
+\end{equation}
+
+equivalent dual problem
+\begin{equation}\label{mcmeq1}
+max_{\alpha,\beta}\:\: \sum_i{\beta_i}
+\end{equation}
+\begin{equation}\label{mcmeq4}
+\sum_i{\alpha_i} = 1 \:\:\forall i={1, 2, ... M}
+\end{equation}
+\begin{equation}
+\sum_i{\alpha_iy_ix_i} - \sum_i{\beta_iy_ix_i} = 0
+\end{equation}
+\begin{equation}
+\sum_i{\alpha_iy_i} - \sum_i{\beta_iy_i} = 0
+\end{equation}
+\begin{equation}\label{mcmeq2}
+0 \leq \beta_i \leq C_1
+\end{equation}
+\begin{equation}\label{mcmeq3}
+0 \leq \alpha_i \leq C_2
+\end{equation}
+\subsection{complexity analysis}
