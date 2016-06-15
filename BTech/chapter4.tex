@@ -143,6 +143,26 @@ min_{\alpha,\beta}\:\: \frac{1}{2}(\beta - \alpha)Q(\beta - \alpha)^T - \sum_i{\
 0 \leq \alpha_i \leq C_2
 \end{equation}
 
+
+if we assume $\delta_i = \beta_i - \alpha_i$, then we can say $w = \sum_i{\deta_iy_ix_i}$ and the objective dual problem becomes as following eqn[REF]
+\begin{equation}\label{mcmeq1}
+min_{\alpha,\beta}\:\: \frac{1}{2}\delta Q \delta^T - \sum_i{\delta_i} +\sum_i{\alpha_i}
+\end{equation}
+\begin{equation}\label{mcmeq4}
+\sum_i{\alpha_i} = 1 \:\:\forall i={1, 2, ... M}
+\end{equation}
+\begin{equation}
+\sum_i{\delta_iy_i} = 0
+\end{equation}
+\begin{equation}\label{mcmeq2}
+0 \leq \delta_i + \alpha_i \leq C_1
+\end{equation}
+\begin{equation}\label{mcmeq3}
+0 \leq \alpha_i \leq C_2
+\end{equation}
+
+this implementation was 50\% faster
+
 \subsection{complexity analysis}
 \subsection{Results}
 \section{Dual Coordinate Descent for large scale MCM}
